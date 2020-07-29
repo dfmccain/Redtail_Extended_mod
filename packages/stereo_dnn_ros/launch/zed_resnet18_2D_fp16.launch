@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- 
+    stereo_dnn_ros .launch file for ZED camera which the zed-ros-wrapper.
+    ZED resolution must be set to VGA in the /home/nvidia/ws/src/zed-ros-wrapper/zed_wrapper/params/common.yaml file 
+    -->
+    
+    <!-- Start ZED ROS node.
+    <arg name="svo_file"             default="" /> 
+    <arg name="stream"               default="" />
+    <arg name="node_name"            default="zed_node" />
+    <arg name="camera_model"         default="zed2" />
+    <arg name="publish_urdf"         default="true" />
+
+ <include file="$(find zed_wrapper)/launch/zed2.launch">
+        <arg name="svo_file"            value="$(arg svo_file)" />
+        <arg name="stream"              value="$(arg stream)" />
+        <arg name="node_name"           value="$(arg node_name)" />
+        <arg name="camera_model"        value="$(arg camera_model)" />
+        <arg name="publish_urdf"        value="$(arg publish_urdf)" />
+    </include>   
+
+    -->
+    <node pkg="stereo_dnn_ros" type="stereo_dnn_ros_node" name="stereo_dnn_ros" output="screen">
+        <param name="camera_topic_left"  value="/zed2/zed_node/left/image_rect_color" />
+        <param name="camera_topic_right" value="/zed2/zed_node/right/image_rect_color" />
+        <param name="model_path"         value="/home/nvidia/redtail/stereoDNN/models/ResNet-18_2D/TensorRT/trt_weights_fp16.bin" />
+        <param name="data_type"          value="fp16" />
+        <param name="camera_queue_size"  value="10" />
+    </node>
+
+</launch>

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<launch>
+	<arg name="vehicle_type" default="ardupilot" />
+	<arg name="alt_gain" default="1.5" />
+	<arg name="joy_type" default="xbox_wired" />
+	<arg name="linear_speed" default="1.0" />
+	<arg name="dnn_turn_angle" default="10.0" />
+	<arg name="dnn_lateralcorr_angle" default="10.0" />
+	<node pkg="px4_controller" type="px4_controller_node" name="ardupilot_controller" output="screen">
+		<param name="altitude_gain" value="$(arg alt_gain)" />
+		<param name="vehicle_type" value="$(arg vehicle_type)" />
+		<param name="joy_type" value="$(arg joy_type)" />
+		<param name="linear_speed" value="$(arg linear_speed)" />
+		<param name="dnn_turn_angle" value="$(arg dnn_turn_angle)" />
+		<param name="dnn_lateralcorr_angle" value="$(arg dnn_lateralcorr_angle)" />
+	</node>
+</launch>

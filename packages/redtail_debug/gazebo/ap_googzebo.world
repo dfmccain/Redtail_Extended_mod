@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <plugin name="map" filename="libStaticMapPlugin.so">
+      <center>49.2699951 -122.8953930</center>
+      <world_size>300</world_size>
+      <map_type>satellite</map_type>
+      <api_key><Your_google_map_API_key></api_key>
+      <use_cache>true</use_cache>
+      <pose> 0 0 0 0 0 -1.5707963267948</pose>
+    </plugin>
+
+    <model name="iris_demo">
+      <include>
+        <uri>model://iris_camera_ros</uri>
+	<!--pose> 0 0 0 0 0 1.5707963267948</pose-->
+      </include>
+    </model>
+  </world>
+</sdf>
