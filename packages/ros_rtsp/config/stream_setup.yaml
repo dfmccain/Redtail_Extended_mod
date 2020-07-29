@@ -1,0 +1,46 @@
+# Set up your streams to rtsp here.
+port: "8554"
+streams: # Cannot rename - must leave this as is.
+
+  stream-zed_camera:
+    type: topic
+    source: /zed2/zed_node/left/image_rect_color
+    mountpoint: /zedimage
+    caps: video/x-raw,framerate=10/1,width=640,height=480
+    bitrate: 100
+
+  stream-zed_ros_depth:
+    type: topic
+    source: /zed2/zed_node/disparity/disparity_image
+    mountpoint: /zeddisp
+    caps: video/x-raw,framerate=10/1,width=640,height=480
+    bitrate: 100
+
+  stream-zed_ros_yolo:
+    type: topic
+    source: /darknet_ros/detection_image
+    mountpoint: /zedyolo
+    caps: video/x-raw,framerate=10/1,width=640,height=480
+    bitrate: 100
+
+  stream-zed_ros_stereo:
+    type: topic
+    source: /stereo_dnn_ros/network/output
+    mountpoint: /zedstereo
+    caps: video/x-raw,framerate=10/1,width=640,height=480
+    bitrate: 100
+
+  stream-zed_ros_stereo_viz:
+    type: topic
+    source: /stereo_dnn_ros_viz/output
+    mountpoint: /zedstereoviz
+    caps: video/x-raw,framerate=10/1,width=640,height=480
+    bitrate: 100
+
+  stream-trail_net_arrow:
+    type: topic
+    source: /redtail_debug/network/image_with_arrow
+    mountpoint: /TrailNetArrow
+    caps: video/x-raw,framerate=10/1,width=640,height=480
+    bitrate: 100
+
